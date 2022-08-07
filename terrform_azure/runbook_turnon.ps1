@@ -22,19 +22,10 @@ catch {
     }
 }
 
-#Get all ARM resources from all resource groups
-$ResourceGroups = Get-AzureRmResourceGroup 
-
-foreach ($ResourceGroup in $ResourceGroups)
-{    
-    Write-Output ("Showing resources in resource group " + $ResourceGroup.ResourceGroupName)
-    $Resources = Find-AzureRmResource -ResourceGroupNameContains $ResourceGroup.ResourceGroupName | Select ResourceName, ResourceType
-    ForEach ($Resource in $Resources)
-    {
-        Write-Output ($Resource.ResourceName + " of type " +  $Resource.ResourceType)
-    }
-    Write-Output ("")
-} 
-
-"Shutdown VMs"
-Stop-AzureRmVM -ResourceGroupName "HoaiNhanRG" -Name "Demo1" -Force
+$ListOfVMs = "HKFINDEV05-test", "HKFINDEVDB05-test", "HKTS16-test", "sgaz-dev-vm-fin-nav09-06", "sgaz-dev-vm-fin-nav17DB-02"
+$RGName = "southeastasia-rg-fin-dev-NAV-01"
+ForEach ($VM in $ListOfVMs)
+{
+    Write-Output "Turnning off VM $VM in Resource Group $RGName"
+    #Start-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
+}

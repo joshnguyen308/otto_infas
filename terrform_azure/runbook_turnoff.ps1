@@ -23,30 +23,9 @@ catch {
 }
 
 $ListOfVMs = "HKFINDEV05-test", "HKFINDEVDB05-test", "HKTS16-test", "sgaz-dev-vm-fin-nav09-06", "sgaz-dev-vm-fin-nav17DB-02"
-$ListOfVMs = "Demo1"
-$RGName = "HoaiNhanRG"
-foreach ($VM in $ListOfVMs)
+$RGName = "southeastasia-rg-fin-dev-NAV-01"
+ForEach ($VM in $ListOfVMs)
 {
-    Write-Output "Turning Off $VM"
-    Stop-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
-    # if ($LASTEXITCODE != 0)
-    # {
-    #     Write-Output "Turn off $VM VM successfully"
-    # }
-    # else
-    # {
-    #     Write-Output "Faild to Turn Off $VM VM"
-    # }
+    Write-Output "Turnning off VM $VM in Resource Group $RGName"
+    #Stop-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
 }
-
-$ListOfVMs = "HKFINDEV05-test", "HKFINDEVDB05-test", "HKTS16-test", "sgaz-dev-vm-fin-nav09-06", "sgaz-dev-vm-fin-nav17DB-02"
-$RGName = "HoaiNhanRG", "ResourceGroup02", "ResourcesGroup03"
-ForEach ($RG in $RGName)
-{
-    ForEach ($VM in $ListOfVMs)
-    {
-        Write-Output "Turnning of VM $VM In Resource Group $RG"
-    }
-}
-
-

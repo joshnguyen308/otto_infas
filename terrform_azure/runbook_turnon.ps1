@@ -26,6 +26,6 @@ $ListOfVMs = "HKFINDEV05-test", "HKFINDEVDB05-test", "HKTS16-test", "sgaz-dev-vm
 $RGName = "southeastasia-rg-fin-dev-NAV-01"
 ForEach ($VM in $ListOfVMs)
 {
-    Write-Output "Turnning off VM $VM in Resource Group $RGName"
+    Write-Output "Turnning On VM $VM in Resource Group $RGName"
     #Start-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
 }

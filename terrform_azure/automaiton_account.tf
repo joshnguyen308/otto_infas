@@ -26,8 +26,11 @@ resource "azurerm_automation_runbook" "VMsTurnOffScript" {
   log_verbose             = "false"
   log_progress            = "false"
   runbook_type            = "PowerShell"
-
-  content = file("./runbook_turnoff.ps1")
+  content                 = file("./runbook_turnoff.ps1")
+  tags = {
+    environment = "develop"
+    managedBy   = "terraform"
+  }
 }
 
 resource "azurerm_automation_runbook" "VMsTurnOnScript" {
@@ -38,8 +41,11 @@ resource "azurerm_automation_runbook" "VMsTurnOnScript" {
   log_verbose             = "false"
   log_progress            = "false"
   runbook_type            = "PowerShell"
-
-  content = file("./runbook_turnon.ps1")
+  content                 = file("./runbook_turnon.ps1")
+  tags = {
+    environment = "develop"
+    managedBy   = "terraform"
+  }
 }
 
 
@@ -51,8 +57,8 @@ resource "azurerm_automation_schedule" "Group2TurnOnTimeFrame" {
   interval                = 1
   timezone                = "Asia/Hong_Kong"
   start_time              = "2022-08-09T08:30:00+08:00"
-  description = "Group2TurnOnTimeFrame"
-  week_days   = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  description             = "Group2TurnOnTimeFrame"
+  week_days               = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 }
 
 resource "azurerm_automation_job_schedule" "LinkScheduleToRunbook1" {
@@ -71,8 +77,8 @@ resource "azurerm_automation_schedule" "Group2TurnOffTimeFrame" {
   interval                = 1
   timezone                = "Asia/Hong_Kong"
   start_time              = "2022-08-09T19:00:00+08:00"
-  description = "Group2TurnOffTimeFrame"
-  week_days   = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  description             = "Group2TurnOffTimeFrame"
+  week_days               = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 }
 
 resource "azurerm_automation_job_schedule" "LinkScheduleToRunbook2" {

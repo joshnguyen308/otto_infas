@@ -27,5 +27,5 @@ $RGName = "southeastasia-rg-fin-dev-NAV-01"
 ForEach ($VM in $ListOfVMs)
 {
     Write-Output "Turnning On VM $VM in Resource Group $RGName"
-    #Start-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
+    Start-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
 }

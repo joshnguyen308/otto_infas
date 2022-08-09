@@ -27,5 +27,5 @@ $RGName = "southeastasia-rg-fin-dev-NAV-01"
 ForEach ($VM in $ListOfVMs)
 {
     Write-Output "Turnning off VM $VM in Resource Group $RGName"
-    #Stop-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
+    Stop-AzureRmVM -ResourceGroupName $RGName -Name $VM -Force
 }
